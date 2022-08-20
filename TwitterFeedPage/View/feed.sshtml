@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Feed</title>
+    <style>
+      .flex-row {
+        display: flex
+      }
+      .flex-one {
+        flex: 1;
+        padding: 0.3em;
+      }
+      .flex-nine {
+        flex: 9;
+        padding: 0.3em;
+      }
+      .full-width {
+        width: 100%;
+      }
+      .half-width {
+        width: 50%;
+      }
+      .right-align {
+        text-align: right;
+      }
+      .icon {
+        height: 1em !important;
+      }
+      .preview-item {
+        padding: 1em;
+        border-radius: 0.8em;
+        background: #cccccc;
+      }
+    </style>
+  </head>
+  <body>
+      @Each.List
+        <div class="flex-row">
+          <div class="flex-one">
+            <img width="100%" alt="Avatar" src="@Current.AvatarUrl"/>
+          </div>
+          <div class="flex-nine">
+            <div class="flex-row">
+              <div class="flex-one half-width">@Current.CreatedBy</div>
+              <div class="flex-one half-width right-align">@Current.CreatedAt</div>
+            </div>
+            <div class="flex-row">
+              <div class="flex-one full-width">@Current.Text</div>
+            </div>
+            @Current.PreviewSite
+            <div>
+              <a target="_blank" href="@Current.ReplyLink"><img class="icon" alt="Reply" src="@Model.SiteUrl/assets/images/reply.png"/></a>&nbsp;
+              @Current.Retweets<a target="_blank" href="@Current.RetweetLink"><img class="icon" alt="Retweet" src="@Model.SiteUrl/assets/images/retweet.png"/></a>&nbsp;
+              @Current.Favorites<a target="_blank" href="@Current.FavoriteLink"><img class="icon" alt="Heart" src="@Model.SiteUrl/assets/images/heart.png"/></a>&nbsp;
+              <a target="_blank" href="@Current.Link"><img class="icon" alt="Open Link" src="@Model.SiteUrl/assets/images/open.png"/></a>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      @EndEach
+  </body>
+</html>
